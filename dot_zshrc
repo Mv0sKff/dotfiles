@@ -1,0 +1,190 @@
+setopt histignorealldups sharehistory
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search.zsh
+source ~/.zsh/zsh-autosuggestions.zsh
+
+# Aliases
+#alias ls='ls --color=auto'
+#alias l='ls -lha'
+alias ls='lsd'
+alias l='lsd -lha'
+
+#alias code='flatpak run com.vscodium.codium'
+alias code='codium'
+
+# Remove safely
+alias rm='mkdir -p /tmp/trash; mv -t /tmp/trash '
+alias rrm='/bin/rm '
+
+alias n='nautilus . &'
+#alias nv='nvim'
+
+alias cat='bat'
+alias ccat='/usr/bin/cat'
+
+mc() {
+  mkdir $1 &&
+  cd $1
+}
+
+# Function to add local files/folders to the .dot directory
+#addot() { 
+#	mv $1 ~/.dot && 
+#	ln -s ~/.dot/$1 . 
+#}
+
+# Fix Keybindings
+bindkey "5C" forward-word
+bindkey "5D" backward-word
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
+bindkey '^[[3~' delete-char
+bindkey  "^[[1~"   beginning-of-line
+bindkey  "^[[4~"   end-of-line
+bindkey "^[OH" beginning-of-line
+bindkey "^[OF" end-of-line
+
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+
+
+bindkey "\E[1~" beginning-of-line
+bindkey "\E[4~" end-of-line
+
+bindkey "^H" backward-kill-word
+
+setopt interactivecomments
+
+# Keybindings for zsh-history-substring-search
+#bindkey "$terminfo[kcuu1]" history-substring-search-up
+#bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# History
+setopt extended_history
+setopt hist_ignore_space
+
+# Ctrl + Shift + Arrow Key select
+#bindkey -e
+
+#function zle-line-init {
+#    marking=0
+#}
+#zle -N zle-line-init
+
+#function select-char-right {
+#    if (( $marking != 1 )) 
+#    then
+#        marking=1
+#        zle set-mark-command
+#    fi
+#    zle .forward-char
+#}
+#zle -N select-char-right
+
+#function select-char-left {
+#    if (( $marking != 1 )) 
+#    then
+#        marking=1
+#        zle set-mark-command
+#    fi
+#    zle .backward-char
+#}
+#zle -N select-char-left
+
+#function forward-char {
+#    if (( $marking == 1 ))
+#    then
+#        marking=0
+#        NUMERIC=-1 zle set-mark-command
+#    fi
+#    zle .forward-char
+#}
+#zle -N forward-char
+
+#function backward-char {
+#    if (( $marking == 1 ))
+#    then
+#        marking=0
+#        NUMERIC=-1 zle set-mark-command
+#    fi
+#    zle .backward-char
+#}
+#zle -N backward-char
+
+#function delete-char {
+#    if (( $marking == 1 ))
+#    then
+#        zle kill-region
+#        marking=0
+#    else
+#        zle .delete-char
+#    fi
+#}
+#zle -N delete-char
+
+#bindkey ';6D' select-char-left   # assuming tilix
+#bindkey ';6C' select-char-right  # assuming tilix
+
+export PATH=$PATH:/home/me/.local/bin
+export PATH=$PATH:/home/me/uopt/uopt-bin
+export PATH=$PATH:/home/me/uopt-bin
+export PATH=$PATH:/home/me/ubin
+export PATH="$HOME/DEV/bin:$PATH"
+# Docker rootless
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+source ~/.zsh/aliases
+
+alias nv='nvim'
+alias cd='z'
+
+# toolbox aliases
+#alias util='toolbox --container misc_utils run '
+
+#cat ~/Archive/todo.txt
+
+if [[ $(ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$)) == "/usr/libexec/flatpak-session-helper" ]]
+then
+  clear
+fi
+
+eval "$(starship init zsh)"
+
+#eval "$(zellij setup --generate-auto-start zsh)"
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+FPATH="$HOME/.docker/completions:$FPATH"
+autoload -Uz compinit
+compinit
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+
