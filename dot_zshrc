@@ -26,8 +26,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/plugins/zsh-history-substring-search.zsh
-source ~/.zsh/plugins/zsh-autosuggestions.zsh
+#source ~/.zsh/plugins/zsh-history-substring-search.zsh
+source ~/.zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases
 #alias ls='ls --color=auto'
@@ -77,6 +78,8 @@ bindkey  "^[[F"   end-of-line
 bindkey "\E[1~" beginning-of-line
 bindkey "\E[4~" end-of-line
 
+# ctrl+delte
+WORDCHARS='*?_[]~=&;!#$%^(){}<>'
 bindkey "^H" backward-kill-word
 
 setopt interactivecomments
