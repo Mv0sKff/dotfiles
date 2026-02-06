@@ -29,7 +29,7 @@ fi
 #    fi
 #fi
 
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
