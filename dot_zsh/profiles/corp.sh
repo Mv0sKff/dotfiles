@@ -1,5 +1,5 @@
 # Corp Profile
-echo "[corp profile]"
+#echo "[corp profile]"
 
 alias code='/mnt/c/Program\ Files/Microsoft\ VS\ Code/Code.exe'
 alias c='clip.exe'

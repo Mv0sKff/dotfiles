@@ -1,5 +1,5 @@
 # Fuse Profile
-echo "[fuse profile]"
+#echo "[fuse profile]"
 
 alias n='nautilus . &'
 
