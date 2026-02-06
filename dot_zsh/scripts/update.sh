@@ -56,3 +56,7 @@ if command -v yay &> /dev/null; then
 fi
 
 echo -e "\n\033[0;31m[all updates complete]\033[0m"
+
+if [ -f /var/run/reboot-required ]; then
+    echo -e "\n\033[1;33mA system reboot is required.\033[0m"
+fi
