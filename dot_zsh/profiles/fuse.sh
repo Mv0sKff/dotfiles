@@ -14,3 +14,6 @@ alias code='flatpak run com.visualstudio.code'
 #alias rcssserver3d='distrobox enter ubuntu -- rcssserver3d'
 #alias c='flatpak run com.visualstudio.code .'
 alias c='wl-copy'
+
+# Docker rootless
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock

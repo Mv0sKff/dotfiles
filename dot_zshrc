@@ -58,8 +58,6 @@ setopt extended_history
 setopt hist_ignore_space
 
 #export PATH="$HOME/DEV/bin:$PATH"
-# Docker rootless
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 export EDITOR=nvim
 export VISUAL=nvim
