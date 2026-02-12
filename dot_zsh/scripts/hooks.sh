@@ -58,6 +58,5 @@ eval "$(pyenv init - $SHELL_TYPE)"
 
 if command -v pyenv >/dev/null 2>&1; then
     eval "$(pyenv virtualenv-init -)"
+    . "$HOME/.zsh/autocomplete/hatch-complete.$SHELL_TYPE"
 fi
-
-. "$HOME/.zsh/autocomplete/hatch-complete.$SHELL_TYPE"
