@@ -20,6 +20,8 @@ eval "$(uvx --generate-shell-completion $SHELL_TYPE)"
 if command -v asdf &> /dev/null; then
     . <(asdf completion $SHELL_TYPE)
 fi
+
+# kubernetes
 #if command -v kubectl &> /dev/null; then
 #    source <(kubectl completion $SHELL_TYPE)
 #    if [ "$SHELL_TYPE" = "bash" ]; then
@@ -30,8 +32,11 @@ fi
 #fi
 
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# rust
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
+# nvm
 if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -43,4 +48,14 @@ if [[ -f "$HOME/.nvm/nvm.sh" ]]; then
     fi
 fi
 
+# javascript
 [[ -f "$HOME/.yarn/bin/yarn" ]] && export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# python
+[[ -d "$HOME/.pyenv" ]] && export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - $SHELL_TYPE)"
+
+if command -v pyenv >/dev/null 2>&1; then
+    eval "$(pyenv virtualenv-init -)"
+fi

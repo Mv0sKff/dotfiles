@@ -35,7 +35,6 @@ source "$SHELL_DIR/scripts/hooks.sh"
 
 if [ -n "$ZSH_VERSION" ]; then
     source "$SHELL_DIR/scripts/shift-select.sh"
-
     source "$SHELL_DIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
     #source "$SHELL_DIR/plugins/zsh-history-substring-search.zsh"
     source "$SHELL_DIR/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh"
