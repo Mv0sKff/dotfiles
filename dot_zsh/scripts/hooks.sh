@@ -54,9 +54,9 @@ fi
 # python
 [[ -d "$HOME/.pyenv" ]] && export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - $SHELL_TYPE)"
 
 if command -v pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init - $SHELL_TYPE)"
     eval "$(pyenv virtualenv-init -)"
     . "$HOME/.zsh/autocomplete/hatch-complete.$SHELL_TYPE"
 fi
