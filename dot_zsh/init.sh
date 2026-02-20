@@ -15,6 +15,7 @@ fi
 SHELL_DIR="$HOME/.zsh"
 
 source "$SHELL_DIR/scripts/paths.sh"
+source "$SHELL_DIR/scripts/hooks.sh"
 
 HOSTNAME=$(hostname)
 
@@ -31,7 +32,6 @@ case "$HOSTNAME" in
 esac
 
 source "$SHELL_DIR/aliases.sh"
-source "$SHELL_DIR/scripts/hooks.sh"
 
 if [ -n "$ZSH_VERSION" ]; then
     source "$SHELL_DIR/scripts/shift-select.sh"

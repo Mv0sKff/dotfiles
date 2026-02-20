@@ -68,6 +68,11 @@ compinit
 
 source ~/.zsh/init.sh
 
+# zsh completion
+autoload -Uz compinit
+compinit
+
+
 if [[ $(ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$)) == "/usr/libexec/flatpak-session-helper" ]]
 then
   clear

@@ -23,3 +23,4 @@ tfgo() {
 	tf plan -out=tfp && tf apply tfp
 }
 
+fpath+=$(brew --prefix)/share/zsh/site-functions
