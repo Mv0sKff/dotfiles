@@ -18,4 +18,6 @@ alias c='wl-copy'
 # Docker rootless
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
-source /usr/lib64/ros2-jazzy/setup.zsh
+#source /usr/lib64/ros2-jazzy/setup.zsh
+
+export PATH=/home/me/.opencode/bin:$PATH

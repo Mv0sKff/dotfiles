@@ -4,7 +4,13 @@ case $- in
       *) return;;
 esac
 
-setopt histignorealldups sharehistory
+setopt histignorealldups
+
+unsetopt INC_APPEND_HISTORY
+unsetopt SHARE_HISTORY
+
+# Write history file on shell exit
+setopt APPEND_HISTORY
 
 HISTSIZE=100000
 SAVEHIST=100000
