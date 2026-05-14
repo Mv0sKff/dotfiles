@@ -1,5 +1,5 @@
 # Devbox Profile
-echo "[devbox profile]"
+#echo "[devbox profile]"
 
 alias n='nautilus . &'
 alias c='wl-copy'
