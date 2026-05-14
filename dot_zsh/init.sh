@@ -24,12 +24,17 @@ case "$HOSTNAME" in
         . "$SHELL_DIR/profiles/corp.sh"
         ;;
     *fuse*)
-        . "$SHELL_DIR/profiles/fuse.sh"
+        if [[ -v DEVBOX ]]; then
+            . "$SHELL_DIR/profiles/devbox.sh"
+        else
+            . "$SHELL_DIR/profiles/fuse.sh"
+        fi
         ;;
     *localpc*)
         . "$SHELL_DIR/profiles/localpc.sh"
         ;;
 esac
+
 
 source "$SHELL_DIR/aliases.sh"
 
