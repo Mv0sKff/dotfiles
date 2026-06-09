@@ -15,6 +15,10 @@ alias code='flatpak run com.visualstudio.code'
 #alias c='flatpak run com.visualstudio.code .'
 alias c='wl-copy'
 
+# mpi fedora fix
+export PATH=/usr/lib64/openmpi/bin:$PATH
+export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:$LD_LIBRARY_PATH
+
 # Docker rootless
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
