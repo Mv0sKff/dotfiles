@@ -26,6 +26,8 @@ case "$HOSTNAME" in
     *fuse*)
         if [[ -v DEVBOX ]]; then
             . "$SHELL_DIR/profiles/devbox.sh"
+        elif [[ -n "${DISTROBOX_ENTER_PATH:-}" ]]; then
+            . "$SHELL_DIR/profiles/ros-ubuntu.sh"
         else
             . "$SHELL_DIR/profiles/fuse.sh"
         fi
